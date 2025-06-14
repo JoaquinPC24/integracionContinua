@@ -1,0 +1,15 @@
+name: Notificación de Cambios en Main
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar notificación a ntfy
+        run: |
+          curl -d "Se ha realizado un push en el repositorio $GITHUB_REPOSITORY" \
+          -H "Title: Cambio en repositorio GitHub" \
+          ntfy.sh/devops-itla
